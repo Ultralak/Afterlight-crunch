@@ -6,7 +6,7 @@ var player_death_effect = preload("res://Player_info/Player_death_effect/player_
 
 @onready var muzzle: Marker2D = $Muzzle
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var damage_amount : int = 3
 
 
 func player_death():
@@ -28,4 +28,10 @@ func _on_hitbox_body_entered(body: Node2D) :
 		
 		if HealthManager.current_health == 0:
 			player_death()
-		
+	
+func get_damage_amount():
+	return damage_amount	
+
+
+func _on_melee_hit_box_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

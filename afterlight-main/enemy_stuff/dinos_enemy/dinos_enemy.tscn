@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dridp0gfxhd2b"]
+[gd_scene load_steps=24 format=3 uid="uid://dridp0gfxhd2b"]
 
 [ext_resource type="Texture2D" uid="uid://b6bq4fkwf4iaf" path="res://enemy_stuff/dinos_enemy/dino-idle.png" id="1_2d8gm"]
+[ext_resource type="Script" uid="uid://knbmewlu5pt4" path="res://enemy_stuff/dinos_enemy/dinos_enemy.gd" id="1_nm8lv"]
 [ext_resource type="Texture2D" uid="uid://3u6pv6vxes6f" path="res://enemy_stuff/dinos_enemy/dino.png" id="2_e06l8"]
 [ext_resource type="Script" uid="uid://bgw0tlf1lo01o" path="res://gravity.gd" id="3_e06l8"]
 [ext_resource type="Script" uid="uid://bicvstrmak4sm" path="res://scripts/state_machine/node_finite_state_machine.gd" id="4_eddgc"]
@@ -104,9 +105,14 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_xe4q1"]
 radius = 53.0377
 
-[node name="enemy_dino" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdusf"]
+radius = 12.0416
+
+[node name="enemy_dino" type="CharacterBody2D" groups=["Enemy"]]
 light_mask = 4
 collision_layer = 4
+collision_mask = 129
+script = ExtResource("1_nm8lv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kitws")
@@ -155,5 +161,14 @@ character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 speed = 100
 
+[node name="hurbox" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurbox"]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_fdusf")
+
 [connection signal="body_entered" from="attack_area" to="State_machine_controller" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="attack_area" to="State_machine_controller" method="_on_attack_area_body_exited"]
+[connection signal="area_entered" from="hurbox" to="." method="_on_hurbox_area_entered"]

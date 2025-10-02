@@ -91,9 +91,17 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		print("Health amount", health_amount)
 		
 		if health_amount<= 0:
-			# create instance of animation at crab position and play animation and destroy crab
 			var enemy_death_fx_instance = enemy_death_effect.instantiate()
 			enemy_death_fx_instance.global_position = global_position
 			get_parent().add_child(enemy_death_fx_instance)
 			queue_free()
 		
+func take_damage(damage: int):
+	health_amount -= damage
+	print("Health amount: ", health_amount)
+	
+	if health_amount <= 0:
+		var enemy_death_fx_instance = enemy_death_effect.instantiate()
+		enemy_death_fx_instance.global_position = global_position
+		get_parent().add_child(enemy_death_fx_instance)
+		queue_free()

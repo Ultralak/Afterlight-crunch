@@ -10,7 +10,7 @@ static func jump_input() -> bool:
 	return jump_input
 	
 static func shoot_input() -> bool:
-	var shoot_input : bool = Input.is_action_just_pressed("shoot")
+	var shoot_input : bool = Input.is_action_pressed("shoot")
 	return shoot_input
 	
 static func shoot_up_input() -> bool:
@@ -22,6 +22,10 @@ static func crouch_input() -> bool:
 	var crouch_input : bool = Input.is_action_just_pressed("crouch")
 	return crouch_input
 
+static func slash_input() -> bool:
+	var slash : bool = Input.is_action_just_pressed("slash")
+	return slash
+	
 static func fall_input() -> bool:
 	var fall_input : bool = Input.is_action_just_pressed("force_fall")
 	return fall_input

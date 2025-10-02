@@ -25,7 +25,6 @@ layer_2/tile_data = PackedInt32Array(-786409, 524288, 3, -720873, 524288, 4, -72
 
 [node name="Player" parent="." index="3"]
 position = Vector2(80, -72)
-speed = 1000
 
 [node name="Enemies" type="Node2D" parent="." index="4"]
 

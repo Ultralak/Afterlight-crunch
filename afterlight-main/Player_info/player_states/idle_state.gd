@@ -30,11 +30,9 @@ func on_physics_process(delta : float):
 	if GameInputEvents.shoot_input():
 		transition.emit("shoot_stand")
 	# shoot up state
-	if GameInputEvents.shoot_up_input():
-		transition.emit("shoot_up")
-	# shoot crouch state
-	if GameInputEvents.crouch_input():
-		transition.emit("shoot_crouch")
+	if GameInputEvents.slash_input():
+		transition.emit("slash")
+
 	
 	
 func enter():

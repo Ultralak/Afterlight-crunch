@@ -1,34 +1,35 @@
-extends AnimatedSprite2D
-
+extends CharacterBody2D
 
 var bullet_impact_effect = preload("res://enemy_stuff/bullet_impac_effect.tscn")
+var velocity_bullet: Vector2 = Vector2.ZERO
 
-var speed : int = 600
-var damage_amount : int = 1
-var direction : int
-var  move_x_direction : bool
+@export var speed: int = 800
+@export var damage_amount: int = 1
 
+func set_velocity_bullet(new_velocity: Vector2):
+	velocity_bullet = new_velocity
 
 func _physics_process(delta: float):
-	#bullet can be fired horizontally or vertically
-	if move_x_direction:
-		move_local_x(direction * speed * delta)
-	else:
-		move_local_y(direction * speed * delta)
+	velocity = velocity_bullet
+	var collision = move_and_slide()
 	
+	if collision:
+
+		bullet_impact()
+
 func _on_timer_timeout() -> void:
 	queue_free()
 
-
-func _on_hitbox_area_entered(_area: Area2D) -> void:
-	print("Bullet_area_entered")
-	bullet_impact()
-func get_damage_amount():
+func get_damage_amount() -> int:
 	return damage_amount
 
-func _on_hitbox_body_entered(_body: Node2D) -> void:
-#	print("bullet_body_entered")
-	bullet_impact()
+
+func _on_damage_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+
+		area.take_damage(damage_amount)
+
+		bullet_impact()
 	
 func bullet_impact():
 	var bullet_impact_effect_instance = bullet_impact_effect.instantiate() as Node2D
