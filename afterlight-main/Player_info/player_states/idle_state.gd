@@ -4,10 +4,10 @@ extends NodeState
 
 @export_category("Physcis Friction")
 @export var slow_down_speed : int = 600
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 	
-func on_physics_process(delta : float):
+func on_physics_process(_delta : float):
 	#Adds friction when the character moves/ may remove later
 	character_body_2d.velocity.x = move_toward(character_body_2d.velocity.x, 0, slow_down_speed)
 	character_body_2d.move_and_slide()
@@ -32,7 +32,8 @@ func on_physics_process(delta : float):
 	# shoot up state
 	if GameInputEvents.slash_input():
 		transition.emit("slash")
-
+	if GameInputEvents.dash_input():
+		transition.emit("dash")
 	
 	
 func enter():

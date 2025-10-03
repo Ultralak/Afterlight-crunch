@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var pickup_amount : int = 1
+@export var pickup_amount : int = 500
 
 func _on_health_pickup_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

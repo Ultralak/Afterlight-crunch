@@ -10,6 +10,6 @@ func transition_to_scene(level : String):
 	if scene_path != null:
 		var screen_transition_screen_instance = scene_transition_screen.instantiate()
 		get_tree().get_root().add_child(screen_transition_screen_instance)
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_file(scene_path)
 		screen_transition_screen_instance.queue_free()

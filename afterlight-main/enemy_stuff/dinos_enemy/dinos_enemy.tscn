@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://dridp0gfxhd2b"]
+[gd_scene load_steps=25 format=3 uid="uid://dridp0gfxhd2b"]
 
 [ext_resource type="Texture2D" uid="uid://b6bq4fkwf4iaf" path="res://enemy_stuff/dinos_enemy/dino-idle.png" id="1_2d8gm"]
 [ext_resource type="Script" uid="uid://knbmewlu5pt4" path="res://enemy_stuff/dinos_enemy/dinos_enemy.gd" id="1_nm8lv"]
 [ext_resource type="Texture2D" uid="uid://3u6pv6vxes6f" path="res://enemy_stuff/dinos_enemy/dino.png" id="2_e06l8"]
+[ext_resource type="PackedScene" uid="uid://da5a4vbdrxk4f" path="res://healthbar.tscn" id="2_fdusf"]
 [ext_resource type="Script" uid="uid://bgw0tlf1lo01o" path="res://gravity.gd" id="3_e06l8"]
 [ext_resource type="Script" uid="uid://bicvstrmak4sm" path="res://scripts/state_machine/node_finite_state_machine.gd" id="4_eddgc"]
 [ext_resource type="Script" uid="uid://cpcatnu7xxx2h" path="res://enemy_stuff/dinos_enemy/state_machine_controller.gd" id="4_s7c81"]
@@ -106,13 +107,19 @@ radius = 12.0
 radius = 53.0377
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdusf"]
-radius = 12.0416
+radius = 16.0
 
 [node name="enemy_dino" type="CharacterBody2D" groups=["Enemy"]]
 light_mask = 4
 collision_layer = 4
-collision_mask = 129
 script = ExtResource("1_nm8lv")
+
+[node name="Healthbar" parent="." node_paths=PackedStringArray("health_source") instance=ExtResource("2_fdusf")]
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = -28.0
+health_source = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kitws")
@@ -132,7 +139,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
-position = Vector2(0, -12)
+position = Vector2(-3, -12)
 shape = SubResource("CircleShape2D_xe4q1")
 debug_color = Color(0.247917, 0.609578, 0.513622, 0.42)
 
@@ -163,7 +170,7 @@ speed = 100
 
 [node name="hurbox" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 4
-collision_mask = 128
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurbox"]
 position = Vector2(0, -11)

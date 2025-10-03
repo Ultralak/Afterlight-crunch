@@ -6,7 +6,9 @@ var player_death_effect = preload("res://Player_info/Player_death_effect/player_
 
 @onready var muzzle: Marker2D = $Muzzle
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var damage_amount : int = 3
+@onready var damage_amount : int = 100
+
+
 
 
 func player_death():
@@ -14,6 +16,8 @@ func player_death():
 	player_death_effect_instance.global_position = global_position
 	get_parent().add_child(player_death_effect_instance)
 	queue_free()
+	Engine.time_scale = 2.0
+	get_tree().reload_current_scene()
 
 
 func _on_hitbox_body_entered(body: Node2D) :
@@ -31,7 +35,3 @@ func _on_hitbox_body_entered(body: Node2D) :
 	
 func get_damage_amount():
 	return damage_amount	
-
-
-func _on_melee_hit_box_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.

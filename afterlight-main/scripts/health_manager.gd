@@ -1,6 +1,6 @@
 extends Node
 
-var max_health : int = 6
+var max_health : int = 1000
 var current_health : int
 
 signal on_health_change

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvvyktj17k8qf"]
 
-[ext_resource type="PackedScene" uid="uid://bxjrfin68xj6c" path="res://UI/ui_scenes/Health_bar.tscn" id="1_dpehd"]
 [ext_resource type="Script" uid="uid://b1fbxhx3cdi6a" path="res://UI/ui_scripts/games_screen.gd" id="1_m3qxh"]
 [ext_resource type="Texture2D" uid="uid://ce8ineee4qqqu" path="res://UI/icons8-pause-12.png" id="2_7faw3"]
 [ext_resource type="Texture2D" uid="uid://dyye1vejeg7af" path="res://Collectibles/blue_coin/coins-chests-etc-2-0.png" id="2_16jmn"]
+[ext_resource type="PackedScene" uid="uid://da5a4vbdrxk4f" path="res://healthbar.tscn" id="3_rvqau"]
 
 [node name="Games_screen" type="CanvasLayer"]
 layer = 2
@@ -29,7 +29,12 @@ layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 1
 
-[node name="Health_bar" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("1_dpehd")]
+[node name="Healthbar" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("3_rvqau")]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 267.0
+offset_bottom = 9.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

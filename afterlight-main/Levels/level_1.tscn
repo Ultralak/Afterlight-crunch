@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://fwn30cxwgxlp"]
+[gd_scene load_steps=25 format=3 uid="uid://fwn30cxwgxlp"]
 
 [ext_resource type="PackedScene" uid="uid://ddjx8e2gk3uql" path="res://Levels/base_level.tscn" id="1_n0qsc"]
 [ext_resource type="PackedScene" uid="uid://cm28cncv8m2um" path="res://Levels/door/door.tscn" id="2_77x7w"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cvvyktj17k8qf" path="res://UI/ui_scenes/games_screen.tscn" id="8_xoyoh"]
 [ext_resource type="PackedScene" uid="uid://dridp0gfxhd2b" path="res://enemy_stuff/dinos_enemy/dinos_enemy.tscn" id="10_2hkqn"]
 [ext_resource type="PackedScene" uid="uid://cto1tdi8tl3lu" path="res://pickups/health_pickups/health_pickup.tscn" id="12_34erp"]
+[ext_resource type="FontFile" uid="uid://bsyltcaldw065" path="res://UI/theme/GravityRegular5.ttf" id="16_k2bse"]
+[ext_resource type="PackedScene" uid="uid://chgljsytwpt32" path="res://killzone.tscn" id="17_c7pbv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_62b6n"]
 texture = ExtResource("4_f4pg2")
@@ -265,12 +267,14 @@ texture = ExtResource("7_34erp")
 
 [sub_resource type="TileSet" id="TileSet_rs4xw"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 0
+physics_layer_0/collision_mask = 132
 sources/0 = SubResource("TileSetAtlasSource_62b6n")
 sources/1 = SubResource("TileSetAtlasSource_k2bse")
 sources/2 = SubResource("TileSetAtlasSource_c7pbv")
 sources/3 = SubResource("TileSetAtlasSource_77l7m")
 sources/4 = SubResource("TileSetAtlasSource_1rr3k")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_77l7m"]
 
 [node name="Level_1" instance=ExtResource("1_n0qsc")]
 process_mode = 1
@@ -321,9 +325,9 @@ position = Vector2(1706, 165)
 [node name="enemy_dino4" parent="Enemies" index="4" instance=ExtResource("10_2hkqn")]
 position = Vector2(1351, -38)
 
-[node name="Enemy_crab" parent="Enemies" index="5" node_paths=PackedStringArray("patrolpoints") instance=ExtResource("3_3mhv4")]
+[node name="Enemy_crab" parent="Enemies" index="5" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_3mhv4")]
 position = Vector2(282, -26)
-patrolpoints = NodePath("patrol_points")
+patrol_points = NodePath("patrol_points")
 
 [node name="patrol_points" type="Node2D" parent="Enemies/Enemy_crab" index="3"]
 
@@ -333,9 +337,9 @@ position = Vector2(-68, -4)
 [node name="point_2" type="Marker2D" parent="Enemies/Enemy_crab/patrol_points" index="1"]
 position = Vector2(64, -3)
 
-[node name="Enemy_crab3" parent="Enemies" index="6" node_paths=PackedStringArray("patrolpoints") instance=ExtResource("3_3mhv4")]
+[node name="Enemy_crab3" parent="Enemies" index="6" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_3mhv4")]
 position = Vector2(810, 43)
-patrolpoints = NodePath("patrol_points")
+patrol_points = NodePath("patrol_points")
 
 [node name="patrol_points" type="Node2D" parent="Enemies/Enemy_crab3" index="3"]
 
@@ -345,9 +349,9 @@ position = Vector2(-68, -4)
 [node name="point_2" type="Marker2D" parent="Enemies/Enemy_crab3/patrol_points" index="1"]
 position = Vector2(81, -1)
 
-[node name="Enemy_crab2" parent="Enemies" index="7" node_paths=PackedStringArray("patrolpoints") instance=ExtResource("3_3mhv4")]
+[node name="Enemy_crab2" parent="Enemies" index="7" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_3mhv4")]
 position = Vector2(516, 32)
-patrolpoints = NodePath("patrol_points")
+patrol_points = NodePath("patrol_points")
 
 [node name="patrol_points" type="Node2D" parent="Enemies/Enemy_crab2" index="3"]
 
@@ -359,10 +363,11 @@ position = Vector2(58, -1)
 
 [node name="player_camera_test" parent="." index="6"]
 position = Vector2(332, -44)
-limit_left = 0
-limit_top = -265
-limit_right = 3267
-limit_bottom = 147
+limit_left = 1
+limit_top = -263
+limit_right = 3268
+limit_bottom = 149
+limit_smoothed = true
 position_smoothing_enabled = false
 editor_draw_limits = true
 smoothing_distance = 1
@@ -391,3 +396,45 @@ position = Vector2(712, -168)
 
 [node name="blue_square_gem" parent="collectibles" index="6" instance=ExtResource("6_77x7w")]
 position = Vector2(1736, -31)
+
+[node name="Label" type="Label" parent="." index="8"]
+offset_left = 102.0
+offset_top = -52.0
+offset_right = 216.0
+offset_bottom = -47.0
+theme_override_fonts/font = ExtResource("16_k2bse")
+theme_override_font_sizes/font_size = 5
+text = "This is a health pickup"
+
+[node name="Label2" type="Label" parent="." index="9"]
+offset_left = 247.0
+offset_top = -117.0
+offset_right = 361.0
+offset_bottom = -112.0
+theme_override_fonts/font = ExtResource("16_k2bse")
+theme_override_font_sizes/font_size = 5
+text = "Kill this. it won't bite ;)"
+
+[node name="Label3" type="Label" parent="." index="10"]
+offset_left = 202.0
+offset_top = 14.0
+offset_right = 431.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("16_k2bse")
+theme_override_font_sizes/font_size = 5
+text = "ohh whats down here. surely ntohing dangerous"
+
+[node name="Label4" type="Label" parent="." index="11"]
+offset_left = 868.0
+offset_top = -64.0
+offset_right = 1097.0
+offset_bottom = -59.0
+theme_override_fonts/font = ExtResource("16_k2bse")
+theme_override_font_sizes/font_size = 5
+text = "dino's love to chase you"
+
+[node name="killzone" parent="." index="12" instance=ExtResource("17_c7pbv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" index="0"]
+position = Vector2(62, 245)
+shape = SubResource("WorldBoundaryShape2D_77l7m")

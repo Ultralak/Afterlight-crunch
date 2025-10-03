@@ -7,7 +7,7 @@ extends NodeState
 
 const GRAVITY : int = 700
 var coyote_jump : bool 
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 	
 func on_physics_process(delta : float):
@@ -24,6 +24,8 @@ func on_physics_process(delta : float):
 	#jump state
 	if GameInputEvents.jump_input() and coyote_jump:
 		transition.emit("jump")
+	if GameInputEvents.dash_input():
+		transition.emit("dash")
 func enter():
 	coyote_jump = true
 	animated_sprite_2d.play("fall")

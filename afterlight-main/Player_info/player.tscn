@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://1wyticltq0qo"]
+[gd_scene load_steps=131 format=3 uid="uid://1wyticltq0qo"]
 
 [ext_resource type="Script" uid="uid://c2et7kpaiw1wj" path="res://Player_info/player.gd" id="1_kgc6e"]
 [ext_resource type="Texture2D" uid="uid://c8felbtaemkwe" path="res://Player_info/player-jump.png" id="1_pchhj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bkkwwci6m0wcu" path="res://Player_info/player_states/new player/Attack 1.png" id="3_ldmdg"]
 [ext_resource type="Texture2D" uid="uid://drt7rrnavjaa0" path="res://Player_info/player_states/new player/Attack 2.png" id="4_77fod"]
 [ext_resource type="Texture2D" uid="uid://wa2sbbmjpj1u" path="res://Player_info/player_states/new player/Fall.png" id="5_3qwfq"]
+[ext_resource type="Texture2D" uid="uid://clw1wg15lj045" path="res://Player_info/Dash.png" id="5_77fod"]
 [ext_resource type="Texture2D" uid="uid://c4imbi7xn1gpo" path="res://Player_info/player-shoot-run.png" id="5_ke8mi"]
 [ext_resource type="Texture2D" uid="uid://dvqbx0s0f4eaw" path="res://Player_info/player-shoot-stand.png" id="7_4u6ak"]
 [ext_resource type="Texture2D" uid="uid://c4hdlnpss1702" path="res://Player_info/player_states/new player/Idle.png" id="7_m6wih"]
@@ -23,6 +24,7 @@
 [ext_resource type="Script" uid="uid://dmn3a60a1c3sw" path="res://Player_info/player_states/jump_state.gd" id="15_bra7n"]
 [ext_resource type="Script" uid="uid://h0cmrdpvww6a" path="res://Player_info/player_states/shoot_stand_state.gd" id="16_bqaql"]
 [ext_resource type="Script" uid="uid://cb831td0qu54v" path="res://Player_info/player_states/shoot_run.gd" id="19_vyr1u"]
+[ext_resource type="Script" uid="uid://igak6keimexq" path="res://Player_info/dash.gd" id="25_3qwfq"]
 [ext_resource type="Script" uid="uid://gnqexqy6f3bv" path="res://Player_info/slash.gd" id="27_3qwfq"]
 [ext_resource type="Script" uid="uid://c3ppddlvsshh3" path="res://Player_info/melee_hitbox.gd" id="28_m6wih"]
 [ext_resource type="Texture2D" uid="uid://dujuwskxbeyjf" path="res://Player_info/player_states/new player/Sprite Sheet/gun.png" id="29_m6wih"]
@@ -134,6 +136,54 @@ region = Rect2(1872, 0, 144, 144)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrndk"]
 atlas = ExtResource("4_77fod")
 region = Rect2(2016, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axg6e"]
+atlas = ExtResource("5_77fod")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjk7r"]
+atlas = ExtResource("5_77fod")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w50t5"]
+atlas = ExtResource("5_77fod")
+region = Rect2(288, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqc7m"]
+atlas = ExtResource("5_77fod")
+region = Rect2(432, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3ugm"]
+atlas = ExtResource("5_77fod")
+region = Rect2(576, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ljwb"]
+atlas = ExtResource("5_77fod")
+region = Rect2(720, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6jfi"]
+atlas = ExtResource("5_77fod")
+region = Rect2(864, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbh27"]
+atlas = ExtResource("5_77fod")
+region = Rect2(1008, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8jha"]
+atlas = ExtResource("5_77fod")
+region = Rect2(1152, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vij2e"]
+atlas = ExtResource("5_77fod")
+region = Rect2(1296, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtnks"]
+atlas = ExtResource("5_77fod")
+region = Rect2(1440, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih4e3"]
+atlas = ExtResource("5_77fod")
+region = Rect2(1584, 0, 144, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ecngl"]
 atlas = ExtResource("5_3qwfq")
@@ -464,6 +514,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_axg6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjk7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w50t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqc7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3ugm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ljwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6jfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbh27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8jha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vij2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtnks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih4e3")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ecngl")
 }, {
 "duration": 1.0,
@@ -721,6 +812,7 @@ size = Vector2(38, 19)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_kgc6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -732,7 +824,7 @@ material = SubResource("ShaderMaterial_h5wjm")
 position = Vector2(0, -8)
 scale = Vector2(0.979167, 1)
 sprite_frames = SubResource("SpriteFrames_ldmdg")
-animation = &"run"
+animation = &"attack_one"
 autoplay = "idle1"
 
 [node name="Muzzle" type="Marker2D" parent="."]
@@ -766,11 +858,17 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 script = ExtResource("14_etojq")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+speed = 500
 
-[node name="jump" type="Node" parent="State Machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+[node name="jump" type="Node" parent="State Machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d", "dash_state")]
 script = ExtResource("15_bra7n")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+dash_state = NodePath("../dash")
+jump_height = -340.0
+jump_horizontal_speed = 200
+max_jump_horizontal_speed = 100
+air_friction = 100
 
 [node name="shoot_stand" type="Node" parent="State Machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d", "muzzle")]
 script = ExtResource("16_bqaql")
@@ -784,21 +882,43 @@ character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 muzzle = NodePath("../../Muzzle")
 
+[node name="dash" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "animated_sprite", "dash_duration_timer", "dash_cooldown_timer")]
+script = ExtResource("25_3qwfq")
+dash_speed = 500.0
+player = NodePath("../..")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+dash_duration_timer = NodePath("../../dash_timer")
+dash_cooldown_timer = NodePath("../../dash_cooldown")
+
 [node name="slash" type="Node" parent="State Machine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("27_3qwfq")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+slash_forward_force = 50.0
 
-[node name="MeleeHitBox" type="Area2D" parent="." node_paths=PackedStringArray("player_reference")]
-collision_layer = 128
+[node name="MeleeHitBox_R" type="Area2D" parent="." node_paths=PackedStringArray("player_reference") groups=["Projectiles"]]
+collision_layer = 256
 collision_mask = 4
 monitoring = false
 monitorable = false
 script = ExtResource("28_m6wih")
 player_reference = NodePath("..")
 
-[node name="CharacterBody2D" type="CollisionShape2D" parent="MeleeHitBox"]
-position = Vector2(19, -10)
+[node name="CharacterBody2D" type="CollisionShape2D" parent="MeleeHitBox_R" groups=["Projectiles"]]
+position = Vector2(20, -9)
+shape = SubResource("RectangleShape2D_dtbdf")
+debug_color = Color(0.877571, 0.22544, 0.64384, 0.42)
+
+[node name="MeleeHitBox_L" type="Area2D" parent="." node_paths=PackedStringArray("player_reference") groups=["Projectiles"]]
+collision_layer = 256
+collision_mask = 4
+monitoring = false
+monitorable = false
+script = ExtResource("28_m6wih")
+player_reference = NodePath("..")
+
+[node name="CharacterBody2D" type="CollisionShape2D" parent="MeleeHitBox_L" groups=["Projectiles"]]
+position = Vector2(-19, -9)
 shape = SubResource("RectangleShape2D_dtbdf")
 debug_color = Color(0.877571, 0.22544, 0.64384, 0.42)
 
@@ -828,6 +948,12 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 }
 
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="dash_cooldown" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="area_entered" from="MeleeHitBox" to="." method="_on_melee_hit_box_area_entered"]
-[connection signal="area_entered" from="MeleeHitBox" to="MeleeHitBox" method="_on_area_entered"]
+[connection signal="area_entered" from="MeleeHitBox_R" to="MeleeHitBox_R" method="_on_area_entered"]
+[connection signal="area_entered" from="MeleeHitBox_L" to="MeleeHitBox_L" method="_on_area_entered"]
